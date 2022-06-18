@@ -6,24 +6,32 @@ class SearchBar extends React.Component {
     this.state ={
       entry : '',
     };
-    this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     // when there is any new input, then add to the state.
-    event.preventDefault();
+    // event.preventDefault();
     this.setState({entry : event.target.value})
     console.log('current Entry', this.state);
 
+  }
+
+  handleSubmit (event) {
+    event.preventDefault();
+    // console.log(true);
+    this.props.checkForMovie(this.state.entry);
+    this.setState({entry: ''});
   }
 
 
   render() {
     return (
       <div>
-        <form>
+        <form >
           <input className= 'formInput' input='text' placeholder='myBrain Hurts' value={this.state.entry} onChange={(value) => {this.handleChange(value)}}/>
-          <button onClick={() => {this.props.checkForMovie(this.state.entry)}} type='button'>Search For Movie</button>
+          <button type='button' onClick={this.handleSubmit}>Search For Movie</button>
         </form>
       </div>
     );
@@ -31,3 +39,6 @@ class SearchBar extends React.Component {
 }
 
 export default SearchBar;
+
+
+//onClic

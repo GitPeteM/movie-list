@@ -9,3 +9,9 @@ body {
 /* .movieslist */
 
 /* .header {} */
+
+.AddButton {
+  width: 20px;
+  color: blue;
+  background-color: greenyellow;
+}

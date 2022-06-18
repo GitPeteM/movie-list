@@ -6,7 +6,8 @@ class AddMovie extends React.Component {
     this.state ={
       entry : '',
     };
-    this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -17,13 +18,20 @@ class AddMovie extends React.Component {
 
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    // console.log(true);
+    this.props.addAMovie(this.state.entry);
+    this.setState({entry: ''});
+  }
+
 
   render() {
     return (
       <div>
         <form>
           <input className= 'formInput' input='text' placeholder='Movie Title...' value={this.state.entry} onChange={(value) => {this.handleChange(value)}}/>
-          {/* <button onClick={() => {this.}} type='button'>Add A Movie</button> */}
+          <button className='AddButton' onClick={this.handleSubmit} type='button'>Add A Movie</button>
         </form>
       </div>
     );
